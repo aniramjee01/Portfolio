@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Engineering Log</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <h1>AI Engineering Log</h1>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="journal.html">Journal</a>
+        <a href="ai-log.html">AI Log</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About Me</a>
+    </nav>
+
+    <h2>Add a New Entry</h2>
+
+    <p>Date:</p>
+    <input type="date" id="logDate">
+
+    <p>Goal:</p>
+    <input type="text" id="goal">
+
+    <p>What did you ask AI?</p>
+    <textarea id="prompt"></textarea>
+
+    <p>What did AI recommend?</p>
+    <textarea id="recommendation"></textarea>
+
+    <p>What did you actually do?</p>
+    <textarea id="action"></textarea>
+
+    <p>Was the AI correct?</p>
+    <input type="text" id="correct">
+
+    <p>What did you learn?</p>
+    <textarea id="learned"></textarea>
+
+    <br><br>
+
+    <button onclick="addEntry()">Add Entry</button>
+
+    <h2>My Entries</h2>
+    <div id="entries"></div>
+
+   <script>
+    function addEntry() {
+        let entry = document.createElement("div");
+
+        entry.innerHTML =
+            "<hr>" +
+            "<p><strong>Date:</strong> " + document.getElementById("logDate").value + "</p>" +
+            "<p><strong>Goal:</strong> " + document.getElementById("goal").value + "</p>" +
+            "<p><strong>Prompt:</strong> " + document.getElementById("prompt").value + "</p>" +
+            "<p><strong>AI Recommendation:</strong> " + document.getElementById("recommendation").value + "</p>" +
+            "<p><strong>What I Did:</strong> " + document.getElementById("action").value + "</p>" +
+            "<p><strong>Was AI Correct?</strong> " + document.getElementById("correct").value + "</p>" +
+            "<p><strong>What I Learned:</strong> " + document.getElementById("learned").value + "</p>";
+
+        document.getElementById("entries").appendChild(entry);
+
+        localStorage.setItem(
+            "aiEntries",
+            document.getElementById("entries").innerHTML
+        );
+    }
+
+    window.onload = function () {
+        let savedEntries = localStorage.getItem("aiEntries");
+
+        if (savedEntries) {
+            document.getElementById("entries").innerHTML = savedEntries;
+        }
+    };
+</script>
+</body>
+</html>

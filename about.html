@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Anirudh's Engineering Lab</title>
+
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body class="about-page">
+
+    <!-- Floating Engineering Decorations -->
+
+    <div class="floating gear-one">⚙️</div>
+    <div class="floating gear-two">⚙️</div>
+    <div class="floating code-one">&lt;/&gt;</div>
+    <div class="floating robot-one">🤖</div>
+    <div class="floating lightning">⚡</div>
+
+
+    <!-- Navigation -->
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="journal.html">Journal</a>
+        <a href="ai-log.html">AI Log</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About Me</a>
+    </nav>
+
+
+    <!-- Header -->
+
+    <header class="about-header">
+
+        <p class="status">● SYSTEM ONLINE</p>
+
+        <h1>Welcome to Anirudh's Engineering Lab</h1>
+
+        <p>
+            Building, coding, and occasionally breaking things.
+        </p>
+
+    </header>
+
+
+    <!-- Main Content -->
+
+    <main class="about-container">
+
+        <section class="profile-card">
+
+            <img
+                class="profile-picture"
+                src="./images/profile.jpg"
+                alt="Picture of Anirudh"
+            >
+
+            <div>
+
+                <p class="small-text">
+                    ENGINEER IN TRAINING
+                </p>
+
+                <h2>My name is Anirudh Ramjee</h2>
+
+                <p>
+                    I am a senior who enjoys computer science,
+                    engineering, robotics, coding, and creating new projects.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Information Cards -->
+
+        <section class="information-grid">
+
+            <div class="information-card">
+
+                <h3>🎓 Grade</h3>
+
+                <p>
+                    Senior
+                </p>
+
+            </div>
+
+
+            <div class="information-card">
+
+                <h3>💻 Programming</h3>
+
+                <p>
+                    Java, HTML, CSS, Python, and Godot.
+                </p>
+
+            </div>
+
+
+            <div class="information-card">
+
+                <h3>🤖 Interests</h3>
+
+                <p>
+                    Computer science, robotics, coding,
+                    engineering, and building projects.
+                </p>
+
+            </div>
+
+
+            <div class="information-card">
+
+                <h3>🚀 Future Goals</h3>
+
+                <p>
+                    I want to study computer science,
+                    continue improving my programming skills,
+                    and create bigger engineering projects.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Easter Egg -->
+
+        <section class="easter-egg">
+
+            <h2>Dangerous Engineering Button</h2>
+
+            <p>
+                The engineer said not to press it...
+            </p>
+
+            <button id="labButton" onclick="activateLab()">
+                DO NOT PRESS
+            </button>
+
+            <p id="secretMessage"></p>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            Designed with code, gears, and questionable engineering decisions.
+        </p>
+
+    </footer>
+
+
+    <!-- Secret Button JavaScript -->
+
+    <script>
+
+        let clicks = 0;
+
+        const messages = [
+            "You pressed it. The robot is now awake. 🤖",
+            "WARNING: Too much engineering detected! ⚠️",
+            "The gears are spinning faster!",
+            "Purdue application mode activated! 🚂",
+            "Achievement unlocked: Professional Button Presser.",
+            "Okay... that is enough clicking."
+        ];
+
+
+        function activateLab() {
+
+            clicks++;
+
+            const message =
+                document.getElementById("secretMessage");
+
+            const button =
+                document.getElementById("labButton");
+
+
+            message.textContent =
+                messages[(clicks - 1) % messages.length];
+
+
+            document.body.classList.toggle("robot-mode");
+
+
+            if (clicks >= 5) {
+
+                button.textContent =
+                    "YOU REALLY LIKE BUTTONS";
+
+            } else {
+
+                button.textContent =
+                    "PRESS AGAIN?";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
