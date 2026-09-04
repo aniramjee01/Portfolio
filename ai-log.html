@@ -1,80 +1,258 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>AI Engineering Log</title>
-    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="stylesheet" href="./css/styles.css">
+
 </head>
 
+
 <body>
-    <h1>AI Engineering Log</h1>
+
+
+    <!-- Navigation -->
 
     <nav>
+
         <a href="index.html">Home</a>
+
         <a href="journal.html">Journal</a>
+
         <a href="ai-log.html">AI Log</a>
+
         <a href="projects.html">Projects</a>
+
         <a href="about.html">About Me</a>
+
     </nav>
+
+
+    <h1>AI Engineering Log</h1>
+
+
+    <p>
+        This page keeps track of how I use AI
+        while working on engineering and coding projects.
+    </p>
+
 
     <h2>Add a New Entry</h2>
 
+
     <p>Date:</p>
-    <input type="date" id="logDate">
+
+    <input
+        type="date"
+        id="logDate"
+    >
+
 
     <p>Goal:</p>
-    <input type="text" id="goal">
+
+    <input
+        type="text"
+        id="goal"
+        placeholder="What are you trying to accomplish?"
+    >
+
 
     <p>What did you ask AI?</p>
-    <textarea id="prompt"></textarea>
+
+    <textarea
+        id="prompt"
+        placeholder="Enter your AI prompt here..."
+    ></textarea>
+
 
     <p>What did AI recommend?</p>
-    <textarea id="recommendation"></textarea>
+
+    <textarea
+        id="recommendation"
+        placeholder="What did the AI recommend?"
+    ></textarea>
+
 
     <p>What did you actually do?</p>
-    <textarea id="action"></textarea>
+
+    <textarea
+        id="action"
+        placeholder="Explain what you actually did."
+    ></textarea>
+
 
     <p>Was the AI correct?</p>
-    <input type="text" id="correct">
+
+    <input
+        type="text"
+        id="correct"
+        placeholder="Yes, no, partially, etc."
+    >
+
 
     <p>What did you learn?</p>
-    <textarea id="learned"></textarea>
 
-    <br><br>
+    <textarea
+        id="learned"
+        placeholder="Explain what you learned."
+    ></textarea>
 
-    <button onclick="addEntry()">Add Entry</button>
+
+    <br>
+
+    <button onclick="addEntry()">
+        Add Entry
+    </button>
+
 
     <h2>My Entries</h2>
+
+
     <div id="entries"></div>
 
-   <script>
-    function addEntry() {
-        let entry = document.createElement("div");
 
-        entry.innerHTML =
-            "<hr>" +
-            "<p><strong>Date:</strong> " + document.getElementById("logDate").value + "</p>" +
-            "<p><strong>Goal:</strong> " + document.getElementById("goal").value + "</p>" +
-            "<p><strong>Prompt:</strong> " + document.getElementById("prompt").value + "</p>" +
-            "<p><strong>AI Recommendation:</strong> " + document.getElementById("recommendation").value + "</p>" +
-            "<p><strong>What I Did:</strong> " + document.getElementById("action").value + "</p>" +
-            "<p><strong>Was AI Correct?</strong> " + document.getElementById("correct").value + "</p>" +
-            "<p><strong>What I Learned:</strong> " + document.getElementById("learned").value + "</p>";
+    <script>
 
-        document.getElementById("entries").appendChild(entry);
+        function addEntry() {
 
-        localStorage.setItem(
-            "aiEntries",
-            document.getElementById("entries").innerHTML
-        );
-    }
+            const date =
+                document.getElementById("logDate").value;
 
-    window.onload = function () {
-        let savedEntries = localStorage.getItem("aiEntries");
+            const goal =
+                document.getElementById("goal").value;
 
-        if (savedEntries) {
-            document.getElementById("entries").innerHTML = savedEntries;
+            const prompt =
+                document.getElementById("prompt").value;
+
+            const recommendation =
+                document.getElementById("recommendation").value;
+
+            const action =
+                document.getElementById("action").value;
+
+            const correct =
+                document.getElementById("correct").value;
+
+            const learned =
+                document.getElementById("learned").value;
+
+
+            if (goal === "") {
+
+                alert("Please enter a goal before adding an entry.");
+
+                return;
+
+            }
+
+
+            const entry =
+                document.createElement("div");
+
+
+            entry.innerHTML =
+
+                "<p><strong>Date:</strong> "
+                + date +
+                "</p>" +
+
+                "<p><strong>Goal:</strong> "
+                + goal +
+                "</p>" +
+
+                "<p><strong>Prompt:</strong> "
+                + prompt +
+                "</p>" +
+
+                "<p><strong>AI Recommendation:</strong> "
+                + recommendation +
+                "</p>" +
+
+                "<p><strong>What I Did:</strong> "
+                + action +
+                "</p>" +
+
+                "<p><strong>Was AI Correct?</strong> "
+                + correct +
+                "</p>" +
+
+                "<p><strong>What I Learned:</strong> "
+                + learned +
+                "</p>";
+
+
+            document
+                .getElementById("entries")
+                .appendChild(entry);
+
+
+            saveEntries();
+
+            clearForm();
+
         }
-    };
-</script>
+
+
+        function saveEntries() {
+
+            localStorage.setItem(
+
+                "aiEntries",
+
+                document
+                    .getElementById("entries")
+                    .innerHTML
+
+            );
+
+        }
+
+
+        function clearForm() {
+
+            document.getElementById("logDate").value = "";
+
+            document.getElementById("goal").value = "";
+
+            document.getElementById("prompt").value = "";
+
+            document.getElementById("recommendation").value = "";
+
+            document.getElementById("action").value = "";
+
+            document.getElementById("correct").value = "";
+
+            document.getElementById("learned").value = "";
+
+        }
+
+
+        window.onload = function () {
+
+            const savedEntries =
+                localStorage.getItem("aiEntries");
+
+
+            if (savedEntries) {
+
+                document
+                    .getElementById("entries")
+                    .innerHTML =
+                    savedEntries;
+
+            }
+
+        };
+
+    </script>
+
+<script src="./js/script.js"></script>
 </body>
+
 </html>
